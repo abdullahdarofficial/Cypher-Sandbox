@@ -20,6 +20,25 @@ class Solution:
         # return out
 
 
+        # if not root:
+        #     return []
+
+        # queue = deque([root])
+        # out = []
+
+        # while queue:
+        #     level_len = len(queue)
+        #     for i in range(level_len):
+        #         current = queue.popleft()
+        #         if i == level_len - 1:
+        #             out.append(current.val)
+        #         if current.left:
+        #             queue.append(current.left)
+        #         if current.right:
+        #             queue.append(current.right)
+
+        # return out
+
         if not root:
             return []
 
@@ -27,15 +46,15 @@ class Solution:
         out = []
 
         while queue:
-            level_len = len(queue)
-            for i in range(level_len):
-                current = queue.popleft()
-                if i == level_len - 1:
-                    out.append(current.val)
-                if current.left:
-                    queue.append(current.left)
-                if current.right:
-                    queue.append(current.right)
+            size = len(queue)
+            for i in range(size):
+                node = queue.popleft()
+                if i == size - 1:
+                    out.append(node.val)
+                if node.left:
+                    queue.append(node.left)
+                if node.right:
+                    queue.append(node.right)
 
         return out
 
