@@ -28,9 +28,7 @@ class Solution:
                 nx, ny = x + dx, y + dy
                 if 0 <= nx < rows and 0 <= ny < cols and maze[nx][ny] == '.' and (nx, ny) not in visited:
                     queue.append((nx, ny, count + 1))
-        print(allexits)
-        if allexits:
-            return min(allexits)
+         
         return -1
 
             
