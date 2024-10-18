@@ -4,17 +4,15 @@ class Solution:
             return None
 
         intervals.sort(key=lambda x: x[1])
-        print(intervals)
         i = 1
         count = 0
+        end = intervals[0][1]
         while i < len(intervals):
-            start, end = intervals[i-1]
             if end > intervals[i][0]:
-                intervals.pop(i)
                 count += 1
             else:
-                i += 1
-            
+                end = intervals[i][1]      
+            i += 1      
         return count
 
 
