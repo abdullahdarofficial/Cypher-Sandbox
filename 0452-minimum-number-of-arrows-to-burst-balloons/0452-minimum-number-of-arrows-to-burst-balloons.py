@@ -13,5 +13,5 @@ class Solution:
             if new_xs > old_xe:
                 arrows += 1
                 old_xe = new_xe
-            
+              
         return arrows
