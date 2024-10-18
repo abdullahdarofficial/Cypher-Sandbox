@@ -41,7 +41,5 @@ class Solution:
                     return binarySearch(mid + 1, right)
             else:
                 return left 
-            # else:
-            #     return 0 
             
         return binarySearch(0, len(nums) - 1)
