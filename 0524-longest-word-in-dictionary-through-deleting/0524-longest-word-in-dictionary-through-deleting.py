@@ -27,7 +27,7 @@ class Solution:
             if len(dictionary[j]) != len(dictionary[j-1]):
                 break
             j-=1
-        return dictionary[j] if dictionary else []
+        return dictionary[j] if dictionary else ""
 
 
 
