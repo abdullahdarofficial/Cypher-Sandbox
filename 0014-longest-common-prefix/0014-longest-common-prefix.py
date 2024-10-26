@@ -3,16 +3,10 @@ class Solution:
         if not strs:
             return ""
         
-        # Start with the first string as the potential prefix
         prefix = strs[0]
-        
         for string in strs[1:]:
-            # Compare prefix with each string and reduce it
-            while string[:len(prefix)] != prefix and prefix:
+            while string.find(prefix) != 0:
                 prefix = prefix[:-1]
-                
-            if not prefix:
-                break
-        
+                if not prefix:
+                    return ""
         return prefix
-        
