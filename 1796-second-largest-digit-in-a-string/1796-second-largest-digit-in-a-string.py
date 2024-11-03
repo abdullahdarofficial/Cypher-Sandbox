@@ -4,9 +4,10 @@ class Solution:
 
         for char in s:
             if char.isnumeric():
-                if int(char) > first:
+                num = int(char)
+                if num > first:
                     second = first
-                    first = int(char)
-                elif int(char) > second and int(char) < first:
-                    second = int(char)
+                    first = num
+                elif num > second and num < first:
+                    second = num
         return second
