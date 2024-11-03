@@ -7,7 +7,6 @@ class Solution:
                 x//=10
             return result
 
-        n = (highLimit - lowLimit) + 2
         maxcount = float('-inf')
         map = {}
         for num in range(lowLimit, highLimit + 1):
