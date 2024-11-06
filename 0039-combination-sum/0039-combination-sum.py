@@ -14,16 +14,30 @@ class Solution:
         # comb([])
         # return [list(num) for num in result]
 
+        # result = []
+        # def comb(curr):
+        #     total = sum(curr)
+        #     if total >= target:
+        #         if total == target:
+        #             curr.sort()
+        #             if curr not in result:
+        #                 result.append(curr)
+        #     else:
+        #         for num in candidates:
+        #             comb(curr + [num])
+        # comb([])
+        # return result
+
         result = []
-        def comb(curr):
-            total = sum(curr)
-            if total >= target:
-                if total == target:
-                    curr.sort()
-                    if curr not in result:
-                        result.append(curr)
-            else:
-                for num in candidates:
-                    comb(curr + [num])
-        comb([])
+        def backtrack(start, curr, total):
+            if total == target:
+                result.append(curr[:])
+                return
+            if total > target:
+                return
+            for i in range(start, len(candidates)):
+                curr.append(candidates[i])
+                backtrack(i, curr, total + candidates[i])
+                curr.pop()
+        backtrack(0,[],0)
         return result
