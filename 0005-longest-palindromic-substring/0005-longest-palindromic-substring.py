@@ -1,105 +1,45 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        
-        # def checkPalindromeOdd(idx):
-        #     i = 0
-        #     while (idx - i) >= 0 and (idx + i) < len(s):
-        #         if s[idx-i] != s[idx + i]:
-        #             return None
-        #         i+=1
-        #     print(idx, i)
-        #     i-=1
-        #     print(idx, i)
-        #     print(s[(idx - i) : (idx + i + 1 )])
-        #     return s[(idx - i) : (idx + i + 1 )]
-
-        # def checkPalindromeEven(idx1, idx2):
-        #     i = 0
-        #     while (idx1 - i) >= 0 and (idx2 + i) < len(s):
-        #         if s[idx1 - i] != s[idx2 + i]:
-        #             return None
-        #         i+=1
-        #     print(idx, i)
-        #     i-=1
-        #     print(idx, i)
-        #     print(s[(idx - i) : (idx + i + 1 )])
-        #     return s[(idx - i) : (idx + i + 1 )]
-
-            
-        # result = []
-        # for idx in range(1, len(s) - 1):
-        #     ans = checkPalindromeOdd(idx)
-        #     if ans: 
-        #         result.append(ans)
-        # for idx in range(0, len(s) - 1):
-        #     print("Even", idx)
-        #     ans = checkPalindromeEven(idx, idx + 1)
-        #     if ans: 
-        #         result.append(ans)
-        
-        # return max(result) if result else None
-
-
-        # # Expanding around centers
-
-        # if len(s) == 1:
-        #     return s
-
-        # def checkPalindromeOdd(idx):
-        #     i = 0
-        #     while (idx - i) >= 0 and (idx + i) < len(s):
-        #         if s[idx - i] != s[idx + i]:
-        #             break
-        #         i+=1
-        #     i-=1
-        #     return s[(idx - i) : (idx + i + 1)]
-
-        # def checkPalindromeEven(idx1, idx2):
-        #     i = 0
-        #     while(idx1 - i) >= 0 and (idx2 + i) < len(s):
-        #         if s[idx1 - i] != s[idx2 + i]:
-        #             break
-        #         i += 1
-        #     i -= 1
-        #     return s[(idx1 - i) : (idx2 + i + 1)]
-
-        # result = ""
-
-        # for idx in range(len(s)):
-        #     odd_palindrome = checkPalindromeOdd(idx)
-        #     even_palindrome = checkPalindromeEven(idx, idx + 1)
-        #     result = max(result, even_palindrome, odd_palindrome, key = len)
-
-        # return result
-
-
-        # Dynamic programming approach
+        # def check(st):
+        #     n = len(st)
+        #     for i in range(n//2):
+        #         if st[i] != st[n-1-i]:
+        #             return False
+        #     return True
+        # if not s:
+        #     return 0
+        # maxstr = s[0]
+        # for i in range(len(s)):
+        #     for j in range(i, len(s)):
+        #         if check(s[i:j+1]) and len(maxstr) < len(s[i:j+1]):
+        #             maxstr = s[i:j+1]
+        # return maxstr
+                    
 
         n = len(s)
-
-        if n == 0:
-            return ""
-
+        if n < 2:
+            return s
+        
         dp = [[False] * n for _ in range(n)]
+        start, maxlen = 0, 1
 
-        start, max_len = 0, 1
-
+        # all elements itself has palindrome
         for i in range(n):
             dp[i][i] = True
 
-        for i in range(n - 1):
-            if s[i] == s[i + 1]:
+        # if any two consecutive elements are same
+        for i in range(n-1):
+            if s[i] == s[i+1]:
                 dp[i][i+1] = True
-                start, max_len = i, 2
-
+                start, maxlen = i, 2
+        # now from 3 elements to complete string
         for length in range(3, n + 1):
             for i in range(n - length + 1):
                 j = i + length - 1
-                if s[i] == s[j] and dp[i + 1][j - 1]:
+                if s[i] == s[j] and dp[i+1][j-1]:
                     dp[i][j] = True
-                    start, max_len = i, length
+                    start, maxlen  = i, length
 
-        return s[start:start + max_len]
-
+        return s[start : start + maxlen]
 
         
