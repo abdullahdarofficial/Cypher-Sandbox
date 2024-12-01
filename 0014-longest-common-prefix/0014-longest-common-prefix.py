@@ -13,5 +13,4 @@ class Solution:
                 prefix = prefix[:-1]  # Reduce the prefix length
                 if not prefix:  # If prefix becomes empty
                     return ""
-        
         return prefix
