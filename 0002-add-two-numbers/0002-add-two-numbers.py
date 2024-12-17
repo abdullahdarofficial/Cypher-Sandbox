@@ -24,4 +24,5 @@ class Solution:
             if l1 is not None: l1 = l1.next
             if l2 is not None: l2 = l2.next
 
+
         return dummy_head.next  # Return the next node of the dummy head, which is the start of the result
