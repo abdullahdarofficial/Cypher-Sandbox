@@ -9,6 +9,7 @@ class Solution:
         
         dummy_head = ListNode(0)  # Create a dummy head for the result linked list
         current = dummy_head  # Pointer to construct the new list
+        
         carry = 0  # Initialize carry
 
         while l1 is not None or l2 is not None or carry:
