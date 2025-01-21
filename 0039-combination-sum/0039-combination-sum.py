@@ -28,6 +28,8 @@ class Solution:
         # comb([])
         # return result
 
+
+
         result = []
         def backtrack(start, curr, total):
             if total == target:
@@ -36,8 +38,6 @@ class Solution:
             if total > target:
                 return
             for i in range(start, len(candidates)):
-                curr.append(candidates[i])
-                backtrack(i, curr, total + candidates[i])
-                curr.pop()
+                backtrack(i, curr + [candidates[i]], total + candidates[i])
         backtrack(0,[],0)
         return result
