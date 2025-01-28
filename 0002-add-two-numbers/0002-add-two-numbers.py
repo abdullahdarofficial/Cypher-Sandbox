@@ -6,7 +6,6 @@
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         
-        
         dummy_head = ListNode(0)  # Create a dummy head for the result linked list
         current = dummy_head  # Pointer to construct the new list
         
