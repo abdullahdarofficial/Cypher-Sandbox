@@ -5,6 +5,9 @@ class Solution:
 
 
 
+
+
+
         num_to_index = {}  # Dictionary to store number and its index
         for i, num in enumerate(nums):
             complement = target - num  # The number needed to reach the target
