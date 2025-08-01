@@ -7,13 +7,6 @@ class Solution:
 
 
 
-
-
-
-
-
-
-
        
        
         if not strs:  # If the list is empty
